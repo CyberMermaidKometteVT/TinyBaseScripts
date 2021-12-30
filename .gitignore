@@ -109,6 +109,8 @@ _vti_pvt/
 
 #Ignore private folder
 /Private/
+
+#This .gitignore was copied from Malware's MDK-SE project.  The following are known non-standard lines that Pixie is keeping just in case they become useful at some point in the future but that she expects will not be for some time. :)
 /Source/UpgradeLog.htm
 /Source/MDKListenerPlugin
 /Source/Pipes
