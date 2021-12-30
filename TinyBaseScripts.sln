@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBaseScripts", "TinyBaseScripts\TinyBaseScripts.csproj", "{7685BCB7-AE9E-4230-9D96-1E78328BFA12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7685BCB7-AE9E-4230-9D96-1E78328BFA12}.Debug|x64.ActiveCfg = Debug|x64
+		{7685BCB7-AE9E-4230-9D96-1E78328BFA12}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D489F80E-8B72-4F39-A549-E677F5C77579}
+	EndGlobalSection
+EndGlobal
