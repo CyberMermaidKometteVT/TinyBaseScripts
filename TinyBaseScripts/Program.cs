@@ -48,8 +48,6 @@ namespace IngameScript
                 allBlocks.RemoveAll(block => block.CubeGrid != Me.CubeGrid);
             }
 
-
-
         }
 
 

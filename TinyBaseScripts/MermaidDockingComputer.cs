@@ -39,7 +39,7 @@ namespace IngameScript
             #region Don't touch unless you have to, may be necessary to make modded thrusters work!
             readonly IReadOnlyList<float> hydrogenThrusterMaxThrusts = new List<float> { 7200000, 1080000, 98400, 480000 }.AsReadOnly();
             readonly IReadOnlyList<float> ionThrusterMaxThrusts = new List<float> { 4320000, 345600, 172800, 14400 }.AsReadOnly();
-            readonly IReadOnlyList<float> atmoThrusterMaxThrusts = new List<float> { 6480000, 648000, 576000, 96000 }.AsReadOnly();
+            readonly IReadOnlyList<float> atmoThrusterMaxThrusts = new List<float> { 6480000, 648000, 576000, 96000, 200000, 2600000, 32000, 230000 }.AsReadOnly();
             #endregion
 
 
@@ -196,14 +196,14 @@ namespace IngameScript
             private void TurnOffHydrogenEngines()
             {
                 List<IMyGasGenerator> hydrogenEngines = new List<IMyGasGenerator>();
-                GridTerminalSystem.GetBlocksOfType(hydrogenEngines);
+                GridTerminalSystem.GetBlocksOfType(hydrogenEngines, IsOnSameGridAsMe);
                 hydrogenEngines.ForEach(engine => engine.Enabled = false);
             }
 
             private void RechargeBatteries()
             {
                 List<IMyBatteryBlock> batteries = new List<IMyBatteryBlock>();
-                GridTerminalSystem.GetBlocksOfType(batteries);
+                GridTerminalSystem.GetBlocksOfType(batteries, IsOnSameGridAsMe);
 
                 IMyBatteryBlock batteryToKeepOn = null;
                 if (KeepOneBatteryOnSoTurnOnScriptCanRun)
@@ -241,28 +241,28 @@ namespace IngameScript
             private void TurnOffGyros()
             {
                 List<IMyGyro> gyros = new List<IMyGyro>();
-                GridTerminalSystem.GetBlocksOfType(gyros);
+                GridTerminalSystem.GetBlocksOfType(gyros, IsOnSameGridAsMe);
                 gyros.ForEach(gyro => gyro.Enabled = false);
             }
 
             private void LockLandingGears()
             {
                 List<IMyLandingGear> gears = new List<IMyLandingGear>();
-                GridTerminalSystem.GetBlocksOfType(gears);
+                GridTerminalSystem.GetBlocksOfType(gears, IsOnSameGridAsMe);
                 gears.ForEach(gear => gear.Lock());
             }
 
             private void TurnOffSpotlights()
             {
                 List<IMyReflectorLight> exteriorLights = new List<IMyReflectorLight>();
-                GridTerminalSystem.GetBlocksOfType(exteriorLights);
+                GridTerminalSystem.GetBlocksOfType(exteriorLights, IsOnSameGridAsMe);
                 exteriorLights.ForEach(light => light.Enabled = false);
             }
 
             private void TurnOffReactors()
             {
                 List<IMyReactor> reactors = new List<IMyReactor>();
-                GridTerminalSystem.GetBlocksOfType(reactors);
+                GridTerminalSystem.GetBlocksOfType(reactors, IsOnSameGridAsMe);
 
                 reactors.ForEach(reactor => reactor.Enabled = false);
             }
@@ -270,7 +270,7 @@ namespace IngameScript
             private void RefillTanks()
             {
                 List<IMyGasTank> tanks = new List<IMyGasTank>();
-                GridTerminalSystem.GetBlocksOfType(tanks);
+                GridTerminalSystem.GetBlocksOfType(tanks, IsOnSameGridAsMe);
 
                 tanks.ForEach(tank => tank.Stockpile = true);
             }
@@ -278,7 +278,7 @@ namespace IngameScript
             private void TurnOffOreDetectors()
             {
                 List<IMyOreDetector> detectors = new List<IMyOreDetector>();
-                GridTerminalSystem.GetBlocksOfType(detectors);
+                GridTerminalSystem.GetBlocksOfType(detectors, IsOnSameGridAsMe);
 
                 detectors.ForEach(detector => detector.Enabled = false);
             }
@@ -286,7 +286,7 @@ namespace IngameScript
             private void SetAutoBatteries()
             {
                 List<IMyBatteryBlock> batteries = new List<IMyBatteryBlock>();
-                GridTerminalSystem.GetBlocksOfType(batteries);
+                GridTerminalSystem.GetBlocksOfType(batteries, IsOnSameGridAsMe);
 
                 batteries.ForEach(battery => battery.ChargeMode = ChargeMode.Recharge);
             }
@@ -294,7 +294,7 @@ namespace IngameScript
             private void SetToUsableTanks()
             {
                 List<IMyGasTank> tanks = new List<IMyGasTank>();
-                GridTerminalSystem.GetBlocksOfType(tanks);
+                GridTerminalSystem.GetBlocksOfType(tanks, IsOnSameGridAsMe);
 
                 tanks.ForEach(tank => tank.Stockpile = false);
             }
@@ -302,28 +302,28 @@ namespace IngameScript
             private void TurnOnGyros()
             {
                 List<IMyGyro> gyros = new List<IMyGyro>();
-                GridTerminalSystem.GetBlocksOfType(gyros);
+                GridTerminalSystem.GetBlocksOfType(gyros, IsOnSameGridAsMe);
                 gyros.ForEach(gyro => gyro.Enabled = true);
             }
 
             private void UnlockLandingGears()
             {
                 List<IMyLandingGear> gears = new List<IMyLandingGear>();
-                GridTerminalSystem.GetBlocksOfType(gears);
+                GridTerminalSystem.GetBlocksOfType(gears, IsOnSameGridAsMe);
                 gears.ForEach(gear => gear.Unlock());
             }
 
             private void TurnOnSpotlights()
             {
                 List<IMyReflectorLight> exteriorLights = new List<IMyReflectorLight>();
-                GridTerminalSystem.GetBlocksOfType(exteriorLights);
+                GridTerminalSystem.GetBlocksOfType(exteriorLights, IsOnSameGridAsMe);
                 exteriorLights.ForEach(light => light.Enabled = true);
             }
 
             private void TurnOnReactors()
             {
                 List<IMyReactor> reactors = new List<IMyReactor>();
-                GridTerminalSystem.GetBlocksOfType(reactors);
+                GridTerminalSystem.GetBlocksOfType(reactors, IsOnSameGridAsMe);
 
                 reactors.ForEach(reactor => reactor.Enabled = true);
             }
@@ -331,7 +331,7 @@ namespace IngameScript
             private void TurnOnHydrogenEngines()
             {
                 List<IMyGasGenerator> hydrogenEngines = new List<IMyGasGenerator>();
-                GridTerminalSystem.GetBlocksOfType(hydrogenEngines);
+                GridTerminalSystem.GetBlocksOfType(hydrogenEngines, IsOnSameGridAsMe);
                 hydrogenEngines.ForEach(engine => engine.Enabled = true);
             }
 
@@ -378,14 +378,17 @@ namespace IngameScript
             {
                 List<IMyThrust> applicableThrusters = new List<IMyThrust>();
                 GridTerminalSystem.GetBlocksOfType(applicableThrusters, thruster =>
-                    range.Any(applicableMaxThrustValue => thruster.MaxThrust >= applicableMaxThrustValue - 5 && thruster.MaxThrust <= applicableMaxThrustValue + 1));
+                    range.Any(applicableMaxThrustValue =>
+                        thruster.MaxThrust >= applicableMaxThrustValue - 5
+                        && thruster.MaxThrust <= applicableMaxThrustValue + 1)
+                    && IsOnSameGridAsMe(thruster));
                 return applicableThrusters;
             }
 
             private bool IsConnectedToStation()
             {
                 List<IMyShipConnector> connectors = new List<IMyShipConnector>();
-                GridTerminalSystem.GetBlocksOfType(connectors);
+                GridTerminalSystem.GetBlocksOfType(connectors, IsOnSameGridAsMe);
 
                 foreach (IMyShipConnector connector in connectors)
                 {
@@ -407,6 +410,7 @@ namespace IngameScript
             private bool IsInAtmo()
             {
                 List<IMyAirVent> exteriorVents = new List<IMyAirVent>();
+                //The next line isn't checking to see if the block is on the same grid, because we're happy to use other ships' vents for this, it's just checking space.
                 GridTerminalSystem.GetBlocksOfType(exteriorVents, ExteriorVentsOnly);
 
                 if (exteriorVents.Count == 0)
@@ -425,7 +429,7 @@ namespace IngameScript
             private bool IsInGravity()
             {
                 List<IMyShipController> blocksIdentifyingGravity = new List<IMyShipController>();
-                GridTerminalSystem.GetBlocksOfType(blocksIdentifyingGravity);
+                GridTerminalSystem.GetBlocksOfType(blocksIdentifyingGravity, IsOnSameGridAsMe);
 
                 if (blocksIdentifyingGravity.Count == 0)
                 {
@@ -439,6 +443,11 @@ namespace IngameScript
             private bool ExteriorVentsOnly(IMyAirVent ventToConsiderAsExternal)
             {
                 return !ventToConsiderAsExternal.CanPressurize;
+            }
+
+            private bool IsOnSameGridAsMe<TTerminalBlock>(TTerminalBlock targetBlock) where TTerminalBlock : IMyTerminalBlock
+            {
+                return targetBlock.CubeGrid == Me.CubeGrid;
             }
         }
     }

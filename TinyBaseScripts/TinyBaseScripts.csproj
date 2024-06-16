@@ -76,6 +76,7 @@
     <Compile Include="EntryPoints\FactoryProductRelease\Program.cs" />
     <Compile Include="EntryPoints\IsBatteryMode\Program.cs" />
     <Compile Include="MDK\Bootstrapper.cs" />
+    <Compile Include="MermaidDockingComputer.cs" />
     <Compile Include="PowerSwitch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Readme.cs" />
