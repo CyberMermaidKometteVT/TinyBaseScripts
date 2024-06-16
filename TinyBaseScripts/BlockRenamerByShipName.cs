@@ -38,7 +38,6 @@ namespace IngameScript
                 GridTerminalSystem = gridTerminalSystem;
                 Me = me;
                 FormerShipNames = new string[] { formerShipName };
-                IMyBatteryBlock a;
             }
 
             public BlockRenamerByShipName(IMyGridTerminalSystem gridTerminalSystem, IMyProgrammableBlock me, string[] formerShipNames = null)

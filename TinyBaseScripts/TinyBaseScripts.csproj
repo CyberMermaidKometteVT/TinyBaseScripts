@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>IngameScript</RootNamespace>
     <AssemblyName>TinyBaseScripts</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -84,6 +84,7 @@
     <Compile Include="StatusSystem.cs" />
     <Compile Include="ScreenGroup.cs" />
     <Compile Include="StatusReportFormatter.cs" />
+    <Compile Include="ToolSelector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild" />
@@ -102,7 +103,9 @@
     <Content Include="SpaceEngineers.Game.dll" />
     <Content Include="SpaceEngineers.ObjectBuilders.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="MDK/MDK.options.props" />
   <Import Project="MDK/MDK.paths.props" />
   <Target Name="AfterBuild">
